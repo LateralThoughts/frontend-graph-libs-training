@@ -13,7 +13,8 @@
     // TODO compléter le code suivant, pour remplacer les p par les données ci-dessus * 2
     d3.select("div")
     	.selectAll("p")
-    	.
+    	.data(dataset)
+      .text(function(d) { return d * 2 });
     // END
   </script>
 </body>
