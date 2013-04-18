@@ -18,14 +18,17 @@
     // END
 
     // TODO rajouter des noeuds pour les données manquantes
-    elements.
-
+    elements.enter()
+      .append("p")
+      .text(function(d) { return "new data : " + d*3 });
     // END
 
     // TODO redimensionner l'affichage avec les nouvelles données en enlevant les noeuds "en trop"
     dataset = [2, 5]
     elements.data(dataset)
-
+      .exit()
+      .transition()
+      .remove();
   </script>
 </body>
 </html>
