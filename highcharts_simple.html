@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>Example simple pour HighCharts</title>
+		<script type="text/javascript" src="highcharts/jquery.min.js"></script>
+		<script type="text/javascript">
+$(function () {
+    var dataset = [ 
+        { x: -1893456000, y: 92228531 }, 
+        { x: -1577923200, y: 106021568 }, 
+        { x: -1262304000, y: 123202660 }, 
+        { x: -946771200, y: 132165129 }, 
+        { x: -631152000, y: 151325798 }, 
+        { x: -315619200, y: 179323175 }, 
+        { x: 0, y: 203211926 }, 
+        { x: 315532800, y: 226545805 }, 
+        { x: 631152000, y: 248709873 }, 
+        { x: 946684800, y: 281421906 }, 
+        { x: 1262304000, y: 308745538 }
+    ];
+    /* unix timestamp to miliseconds */
+    $.each(dataset, function(key, value) { value.x *= 1000; return value; });
+    /* create charts */
+    $('#container').highcharts({
+        chart: { type: 'line' },
+        series: [{
+            name : "Cours de l'or, ou pas",
+            data: dataset
+        }]
+    });
+    /* et si on gérait ça comme une date ? xAxis: { type: 'datetime' }, */
+});
+	</script>
+	</head>
+	<body>
+<script src="highcharts/highcharts.js"></script>
+
+<div id="container" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
+
+	</body>
+</html>
