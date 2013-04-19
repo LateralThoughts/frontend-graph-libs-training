@@ -43,7 +43,6 @@ var dataset = [
     { x: 1262304000, y: 308745538 }
 ];
 
-// TODO instancier un nouveau graph pour rendre le dataset ci-dessus :
 var graph = new Rickshaw.Graph( {
     element: document.querySelector("#chart"), 
     width: 300, 
@@ -53,6 +52,9 @@ var graph = new Rickshaw.Graph( {
         data: dataset
     }]
 });
+
+// TODO ajouter la légende des abscisses, voir new Rickshaw.Graph.Axis.Time :
+var axesTime = 
 
 // END
 graph.render();
