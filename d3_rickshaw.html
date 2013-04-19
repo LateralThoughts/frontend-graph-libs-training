@@ -44,7 +44,15 @@ var dataset = [
 ];
 
 // TODO instancier un nouveau graph pour rendre le dataset ci-dessus :
-var graph = 
+var graph = new Rickshaw.Graph( {
+    element: document.querySelector("#chart"), 
+    width: 300, 
+    height: 200, 
+    series: [{
+        color: 'steelblue',
+        data: dataset
+    }]
+});
 
 // END
 graph.render();
