@@ -6,31 +6,34 @@
 		<script type="text/javascript" src="highcharts/jquery.min.js"></script>
 		<script type="text/javascript">
 $(function () {
-    var dataset = [ 
-        { x: -1893456000, y: 92228531 }, 
-        { x: -1577923200, y: 106021568 }, 
-        { x: -1262304000, y: 123202660 }, 
-        { x: -946771200, y: 132165129 }, 
-        { x: -631152000, y: 151325798 }, 
-        { x: -315619200, y: 179323175 }, 
-        { x: 0, y: 203211926 }, 
-        { x: 315532800, y: 226545805 }, 
-        { x: 631152000, y: 248709873 }, 
-        { x: 946684800, y: 281421906 }, 
-        { x: 1262304000, y: 308745538 }
-    ];
-    /* unix timestamp to miliseconds */
-    $.each(dataset, function(key, value) { value.x *= 1000; return value; });
+    var SERVER_URL = "http://localhost:8000/api/events/test"
     /* create charts */
     $('#container').highcharts({
-        chart: { type: 'line' },
+        chart: { 
+            type: 'line',
+            /* // pour quand les animations seront trop lentes 
+            animation: {
+                duration: 100 // default = 500 ms
+            },*/
+            events: {
+                load: function() {
+                    // set up the updating of the chart each second
+                    var series = this.series[0];
+                    var source = new EventSource(SERVER_URL)
+                    source.addEventListener("quote_received", function(e) {
+                        var quote = JSON.parse(e.data);
+                        shift = series.data.length > 20
+                        series.addPoint([quote.time, quote.price], true, shift);
+                    });   
+                }
+            }
+        },
         xAxis: { type: 'datetime' },
         series: [{
             name : "Cours de l'or, ou pas",
-            data: dataset
+            data: []
         }]
     });
-    /* et si on gérait ça comme une date ? xAxis: { type: 'datetime' }, */
 });
 	</script>
 	</head>
