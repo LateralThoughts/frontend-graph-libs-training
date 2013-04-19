@@ -53,8 +53,7 @@ var graph = new Rickshaw.Graph( {
     }]
 });
 
-// TODO ajouter la légende des abscisses, voir new Rickshaw.Graph.Axis.Time :
-var axesTime = 
+var axesTime = new Rickshaw.Graph.Axis.Time({graph : graph});
 
 // END
 graph.render();
