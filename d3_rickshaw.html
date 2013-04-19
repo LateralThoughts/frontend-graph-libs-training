@@ -55,8 +55,11 @@ var graph = new Rickshaw.Graph( {
 
 var axesTime = new Rickshaw.Graph.Axis.Time({graph : graph});
 
-// TODO ajouter la légende des ordonnées, voir new Rickshaw.Graph.Axis.Y
-var y_axis = 
+var y_axis = new Rickshaw.Graph.Axis.Y( {
+        graph: graph,
+        orientation: 'left',
+        element: document.getElementById('y_axis'),
+} );
 
 // END
 graph.render();
