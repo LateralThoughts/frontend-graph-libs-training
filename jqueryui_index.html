@@ -26,7 +26,7 @@
           padding-right: 5px;
         }
       }
-      .draggable {
+      #sortable div {
         background-color: grey;
       }
     </style>
@@ -85,17 +85,17 @@
               Regarder, je suis tout seul sur ma grande page !
             </div>
           </div><!--/row-->
-          <div class="row-fluid">
+          <div id="sortable" class="row-fluid">
             <!-- TODO compléter ici pour créer 3 colonnes -->
-            <div class="span3 draggable">
+            <div class="span3">
               Première colonne
               <p><a class="btn" href="#">View details &raquo;</a></p>
             </div><!--/span-->
-            <div class="span3 draggable">
+            <div class="span3">
               Deuxième colonne
               <p><a class="btn" href="#">View details &raquo;</a></p>
             </div><!--/span-->
-            <div class="span3 draggable">
+            <div class="span3">
               Dernière colonne
               <p><a class="btn" href="#">View details &raquo;</a></p>
             </div><!--/span-->
@@ -120,7 +120,7 @@
     
     <script type="text/javascript">
     $(function() {
-        $( ".draggable" ).draggable();
+        /* TODO add code to be able to sort the divs between each other */
     });
     </script>
   </body>
